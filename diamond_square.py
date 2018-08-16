@@ -7,7 +7,7 @@ def terrain():
     # Initialise corner values
     set_corners(height_map)
 
-    diamond_square(size)
+    diamond_square(size-1)
 
 
 
@@ -40,7 +40,7 @@ def diamond_square(size):
 
     size = int(size)
     half = int(size / 2)
-    max_height = 4 #size - 1
+    max_height = 2 ** n # Needs to be set to (2^n)
 
     print("SIZE = {0} HALF = {1} MAX = {2}".format(size, half, max_height))
 
@@ -60,7 +60,7 @@ def diamond_square(size):
     print("\n-----STARTING SQUARE STEP------\n")
     # Perform 'square' steps
     for y in range(0, max_height + 1, half):
-        for x in range((y + half) % max_height, max_height + 1, max_height):
+        for x in range((y + half) % size, max_height + 1, size):
             print("(x,y) = ({0},{1})".format(x,y))
             square(x, y, half, 4.0)
 
