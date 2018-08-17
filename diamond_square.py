@@ -1,5 +1,6 @@
 # Import useful libraries
 from statistics import mean
+from math import isclose
 
 
 def terrain():
@@ -126,6 +127,27 @@ def get_value(x, y):
     return height_map[x][y]
 
 
+def check_height_map(height_map):
+    print("\n------------ CHECKING HEIGHT MAP VALUES ---------------")
+    if height_map:
+        for row in height_map:
+            for num in row:
+                if isclose(num, 0.0):
+                    print("Contains a zero. Needs debugging")
+                    return
+
+    print("Does not contain a zero. All good")
+
+
+
+# Driver function
+def main():
+    terrain()
+    print_height_map(height_map)
+    check_height_map(height_map)
+
+    
+
 ###############################################################################
 ### GLOBAL VARIABLES XD
 
@@ -135,14 +157,6 @@ n = int(input("Please enter n: "))
 # Define parameters of height map
 size = (2 ** n) + 1
 height_map = [[0.0] * size for n in range(size)]
-
-
-# Driver function
-def main():
-    terrain()
-    print_height_map(height_map)
-
-    
 
 
 
